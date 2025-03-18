@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaf Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen bg-green-100">
+
+   
+    <h1 class="text-3xl font-bold text-green-700 mb-4">Explore the Leaf!</h1>
+
+    
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+        <img id="leafImage" src="leaf-drawing.png" alt="Drawn Leaf" class="w-64 h-64 object-contain cursor-pointer" onclick="enlargeLeaf()">
+    </div>
+
+   
+    <button onclick="goBack()" 
+        class="mt-6 px-6 py-3 bg-green-500 text-white text-lg font-semibold rounded-lg shadow-md hover:bg-green-600 transition duration-300">
+        Play Again
+    </button>
+
+   
+    <audio id="clickSound">
+        <source src="click-sound.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function goBack() {
+            document.getElementById('clickSound').play(); 
+            window.location.href = "index.html"; 
+        }
+
+        function enlargeLeaf() {
+            let leafImg = document.getElementById("leafImage");
+            let currentSize = leafImg.classList.contains("w-64") ? "w-64" : "w-full";
+
+            if (currentSize === "w-64") {
+                leafImg.classList.remove("w-64", "h-64");
+                leafImg.classList.add("w-full", "h-auto", "max-w-screen-md");
+            } else {
+                leafImg.classList.remove("w-full", "h-auto", "max-w-screen-md");
+                leafImg.classList.add("w-64", "h-64");
+            }
+
+            document.getElementById('clickSound').play(); 
+        }
+    </script>
+
+</body>
+</html>
